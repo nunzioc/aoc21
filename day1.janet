@@ -1,6 +1,6 @@
 (def nums
   (->>
-   (slurp "data/one.txt")
+   (slurp "data/day1.txt")
    (string/split "\n")
    (map |(scan-number $))))
 # get rid of nil value at the end of nums

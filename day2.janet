@@ -13,3 +13,4 @@
   (loop [l :iterate (file/read f :line)]
     (part1 l)))
 (print (* depth dist))
+# hmm maybe i should reduce using a table as my accumulater

@@ -3,10 +3,11 @@
 (defn move-sub [acc el]
   (let [[word end] (string/split " " el)]
     (let [num (scan-number (string/trim end))]
-    (cond
-      (= "forward" word) (update acc :dist |(+ $ num))
-      (= "down" word) (update acc :depth |(+ $ num))
-      (= "up" word) (update acc :depth |(- $ num))))))
+    (def [key val] (cond
+      (= "forward" word) [:dist num]
+      (= "down" word) [:depth num]
+      (= "up" word) [:depth (- 0 num)]))
+    (update acc key |(+ $ val)))))
 (def res (reduce move-sub @{ :dist 0 :depth 0 } vals))
 (pp (* ;(values res)))
 

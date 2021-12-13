@@ -4,9 +4,9 @@
   (let [[word end] (string/split " " el)]
     (let [num (scan-number (string/trim end))]
     (cond
-      (= "forward" word) (put acc :dist (+ (get acc :dist) num))
-      (= "down" word) (put acc :depth (+ (get acc :depth) num))
-      (= "up" word) (put acc :depth (- (get acc :depth) num))))))
+      (= "forward" word) (update acc :dist |(+ $ num))
+      (= "down" word) (update acc :depth |(+ $ num))
+      (= "up" word) (update acc :depth |(- $ num))))))
 (def res (reduce move-sub @{ :dist 0 :depth 0 } vals))
 (pp (* ;(values res)))
 

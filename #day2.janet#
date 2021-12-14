@@ -34,9 +34,6 @@
 (defn part2 [vals]
   (var [depth dist aim] [0 0 0])
   (loop [line :in vals]
-    (pp depth)
-    (pp dist)
-    (pp aim)
     (let [[word num] (parse-line line)]
       (cond
         (= "forward" word) (do (+= dist num) (+= depth (* aim num)))
